@@ -2,6 +2,7 @@ node {
    stage 'Checkout'
    sh "rm -rf go/"
    sh "rm -rf ssa/"
+   sh "rm -rf ssa-tmp/"
    sh "git clone https://github.com/golang/go.git"
    sh "git clone https://github.com/bjwbell/ssa.git"
    sh "rm -rf ssa-tmp/"
@@ -15,5 +16,6 @@ node {
    sh "cd ssa-tmp/; git push -u origin master"
    stage 'Cleanup'
    sh "rm -rf go/"
+   sh "rm -rf ssa/"
    sh "rm -ff ssa-tmp/"
 }
