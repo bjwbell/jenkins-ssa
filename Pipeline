@@ -12,7 +12,7 @@ node {
    sh "cd go/; git push ../ssa-tmp bjwbell-ssa:master"
    stage 'Push'
    sh "cd ssa/; git pull --no-edit ~/ssa-tmp master"
-   sh "cd ssa/; git push -u origin master"
+   sh "cd ssa/; git pull origin master; git push -u origin master"
    stage 'Cleanup'
    sh "rm -rf go/"
    sh "rm -rf ssa/"
