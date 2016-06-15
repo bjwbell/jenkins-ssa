@@ -17,5 +17,5 @@ node {
    stage 'Cleanup'
    sh "rm -rf go/"
    sh "rm -rf ssa/"
-   sh "rm -ff ssa-tmp/"
+   sh "rm -rf ssa-tmp/"
 }
