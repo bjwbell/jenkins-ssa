@@ -4,16 +4,15 @@ node {
    sh "rm -rf ssa/"
    sh "rm -rf ssa-tmp/"
    sh "git clone https://github.com/golang/go.git"
-   sh "git clone https://github.com/bjwbell/ssa.git"
-   sh "rm -rf ssa-tmp/"
-   sh "mkdir ssa-tmp/"
+   sh "git clone git@github.com:bjwbell/ssa.git"
    stage 'Split'
+   sh "mkdir ssa-tmp/"
    sh "cd ssa-tmp/; git init --bare"
    sh "cd go/; git subtree split -P src/cmd/compile/internal/ssa -b bjwbell-ssa"
    sh "cd go/; git push ../ssa-tmp bjwbell-ssa:master"
    stage 'Push'
-   sh "cd ssa-tmp/; git remote add origin git@github.com:bjwbell/ssa-tmp.git"
-   sh "cd ssa-tmp/; git push -u origin master"
+   sh "cd ssa/; git pull --no-edit ~/ssa-tmp master"
+   sh "cd ssa/; git push -u origin master"
    stage 'Cleanup'
    sh "rm -rf go/"
    sh "rm -rf ssa/"
