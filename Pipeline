@@ -9,7 +9,7 @@ node {
    stage 'Split'
    sh "cd ssa-tmp/; git init --bare"
    sh "cd go/; git subtree split -P src/cmd/compile/internal/ssa -b bjwbell-ssa"
-   sh "cd go/; git push ~/ssa-tmp bjwbell-ssa:master"
+   sh "cd go/; git push ../ssa-tmp bjwbell-ssa:master"
    stage 'Push'
    sh "cd ssa-tmp/; git remote add origin git@github.com:bjwbell/ssa-tmp.git"
    sh "cd ssa-tmp/; git push -u origin master"
